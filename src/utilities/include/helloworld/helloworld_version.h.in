@@ -1,0 +1,56 @@
+//-----------------------------------------------------------------------bl-
+//--------------------------------------------------------------------------
+// 
+// HelloWorld - An Autotools library template
+//
+// Copyright (C) 2013 The PECOS Development Team
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the Version 2.1 GNU Lesser General
+// Public License as published by the Free Software Foundation.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc. 51 Franklin Street, Fifth Floor,
+// Boston, MA  02110-1301  USA
+//
+//-----------------------------------------------------------------------el-
+//
+// $Id$
+//
+//--------------------------------------------------------------------------
+//--------------------------------------------------------------------------
+#ifndef HELLOWORLD_VERSION_H
+#define HELLOWORLD_VERSION_H
+
+#define HELLOWORLD_MAJOR_VERSION  @GENERIC_MAJOR_VERSION@
+#define HELLOWORLD_MINOR_VERSION  @GENERIC_MINOR_VERSION@
+#define HELLOWORLD_MICRO_VERSION  @GENERIC_MICRO_VERSION@
+
+#define HELLOWORLD_BUILD_USER     "@BUILD_USER@"
+#define HELLOWORLD_BUILD_ARCH     "@BUILD_ARCH@"
+#define HELLOWORLD_BUILD_HOST     "@BUILD_HOST@"
+#define HELLOWORLD_BUILD_DATE     "@BUILD_DATE@"
+#define HELLOWORLD_BUILD_VERSION  "@BUILD_VERSION@"
+
+#define HELLOWORLD_LIB_VERSION    "@VERSION@"
+#define HELLOWORLD_LIB_RELEASE    "@BUILD_DEVSTATUS@"
+
+#define HELLOWORLD_CXX            "@CXX@"
+#define HELLOWORLD_CXXFLAGS       "@CXXFLAGS@"
+
+#include <iostream>
+#include <iomanip>
+
+namespace HelloWorld
+{
+  void helloworld_version_stdout();
+  int  get_helloworld_version();
+} // end namespace HelloWorld
+
+#endif //HELLOWORLD_VERISON_H
