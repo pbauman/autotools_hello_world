@@ -21,6 +21,7 @@
 #
 # COPYLEFT
 #
+#   Copyright (c) 2013 Roy H. Stogner <roystgnr@ices.utexas.edu>
 #   Copyright (c) 2013 Paul T. Bauman <pbauman@ices.utexas.edu>
 #   Copyright (c) 2010 Karl W. Schulz <karl@ices.utexas.edu>
 #   Copyright (c) 2009 Rhys Ulerich <rhys.ulerich@gmail.com>
@@ -64,7 +65,8 @@ HAVE_HELLOWORLD=0
 # if test "${with_helloworld}" != no ; then
 
     if test -d "${HELLOWORLD_PREFIX}/lib" ; then
-       HELLOWORLD_LIBS="-L${HELLOWORLD_PREFIX}/lib -lhelloworld -Wl,-rpath,${HELLOWORLD_PREFIX}/lib"
+       HELLOWORLD_LDFLAGS="-L${HELLOWORLD_PREFIX}/lib -Wl,-rpath,${HELLOWORLD_PREFIX}/lib"
+       HELLOWORLD_LIBS="-lhelloworld"
     fi
 
     if test -d "${HELLOWORLD_PREFIX}/include" ; then
@@ -76,7 +78,8 @@ HAVE_HELLOWORLD=0
     ac_HELLOWORLD_save_LIBS="$LIBS"
 
     CPPFLAGS="${HELLOWORLD_CPPFLAGS} ${CPPFLAGS}"
-    LDFLAGS="${HELLOWORLD_LIBS} ${LDFLAGS}"
+    LDFLAGS="${HELLOWORLD_LDFLAGS} ${LDFLAGS}"
+    LIBS="${HELLOWORLD_LIBS} ${LIBS}"
 
     AC_LANG_PUSH([C++])
     AC_CHECK_HEADER([helloworld/helloworld_version.h],[found_header=yes],[found_header=no])
@@ -182,12 +185,14 @@ HAVE_HELLOWORLD=0
        else
           AC_MSG_NOTICE([optional HelloWorld library not found])
           HELLOWORLD_CPPFLAGS=""   # HELLOWORLD_CFLAGS empty on failure
-          HELLOWORLD_LIBS=""     # HELLOWORLD_LIBS empty on failure
+          HELLOWORLD_LDFLAGS=""    # HELLOWORLD_LDFLAGS empty on failure
+          HELLOWORLD_LIBS=""       # HELLOWORLD_LIBS empty on failure
        fi
     else
         HAVE_HELLOWORLD=1
         AC_DEFINE(HAVE_HELLOWORLD,1,[Define if HelloWorld is available])
         AC_SUBST(HELLOWORLD_CPPFLAGS)
+        AC_SUBST(HELLOWORLD_LDFLAGS)
         AC_SUBST(HELLOWORLD_LIBS)
         AC_SUBST(HELLOWORLD_PREFIX)
     fi
