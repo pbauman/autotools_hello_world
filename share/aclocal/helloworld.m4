@@ -137,7 +137,7 @@ HAVE_HELLOWORLD=0
        if test "$is_package_required" = yes; then
           AC_MSG_ERROR([
 
-   Your HELLOWORLD version does not meet the minimum versioning
+   Your HelloWorld version does not meet the minimum versioning
    requirements ($min_helloworld_version).  Please use --with-helloworld to specify the location
    of an updated installation or consider upgrading the system version.
 
@@ -153,7 +153,7 @@ HAVE_HELLOWORLD=0
 
     AC_LINK_IFELSE(
                   [AC_LANG_PROGRAM([#include "helloworld/helloworld_version.h"],
-                                   [HELLOWORLD::get_helloworld_version()])],
+                                   [HelloWorld::get_helloworld_version()])],
                   [AC_MSG_RESULT(yes)
                    found_library=yes],
                   [AC_MSG_RESULT(no) 
@@ -178,15 +178,15 @@ HAVE_HELLOWORLD=0
 
     if test "$succeeded" = no; then
        if test "$is_package_required" = yes; then
-          AC_MSG_ERROR([HELLOWORLD not found.  Try either --with-helloworld or setting HELLOWORLD_DIR.])
+          AC_MSG_ERROR([HelloWorld not found.  Try either --with-helloworld or setting HELLOWORLD_DIR.])
        else
-          AC_MSG_NOTICE([optional HELLOWORLD library not found])
+          AC_MSG_NOTICE([optional HelloWorld library not found])
           HELLOWORLD_CPPFLAGS=""   # HELLOWORLD_CFLAGS empty on failure
           HELLOWORLD_LIBS=""     # HELLOWORLD_LIBS empty on failure
        fi
     else
         HAVE_HELLOWORLD=1
-        AC_DEFINE(HAVE_HELLOWORLD,1,[Define if HELLOWORLD is available])
+        AC_DEFINE(HAVE_HELLOWORLD,1,[Define if HelloWorld is available])
         AC_SUBST(HELLOWORLD_CPPFLAGS)
         AC_SUBST(HELLOWORLD_LIBS)
         AC_SUBST(HELLOWORLD_PREFIX)
