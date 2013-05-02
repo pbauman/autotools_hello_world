@@ -106,6 +106,7 @@ dnl-----------------------------------------------
 AC_CONFIG_FILES([
   helloworld.pc
   doxygen/Makefile
+  doxygen/helloworld.dox
   Makefile
   src/Makefile
   test/Makefile
