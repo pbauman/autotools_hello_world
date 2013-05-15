@@ -86,7 +86,7 @@ DX_XML_FEATURE(OFF)
 DX_PDF_FEATURE(ON)
 DX_PS_FEATURE(OFF)
 
-DX_INIT_DOXYGEN(HELLOWORLD, doxygen/helloworld.dox, docs/doxygen)
+DX_INIT_DOXYGEN(helloworld, doxygen/helloworld.dox, docs/doxygen)
 
 AC_CONFIG_FILES(doxygen/txt_common/about_vpath.page)
 

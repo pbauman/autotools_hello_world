@@ -48,25 +48,26 @@ AM_CPPFLAGS += -I$(top_srcdir)/src/core/include
 AM_CPPFLAGS += -I$(top_srcdir)/src/utilities/include
 AM_CPPFLAGS += -I$(top_builddir)/src/utilities/include #helloworld_version.h
 
+CLEANFILES =
+
 #--------------
 # Code coverage
 #--------------
 if CODE_COVERAGE_ENABLED
-  CLEANFILES = *.gcda *.gcno
+  CLEANFILES += *.gcda *.gcno
 endif
 
 #---------------------------------
 # Embedded license header support
 #---------------------------------
 
+STAMPED_FILES = $(libhelloworld_la_SOURCES) $(include_HEADERS) $(helloworld_version_SoURCES)
+
 .license.stamp: $(top_srcdir)/LICENSE
-	$(top_srcdir)/src/common/lic_utils/update_license.pl $(top_srcdir)/LICENSE \
-        $(top_srcdir)/src/core/include/helloworld/*.h \
-	$(top_srcdir)/src/utilities/include/helloworld/*.h \
-	$(top_srcdir)/src/core/src/*.C \
-        $(top_srcdir)/src/utilities/src/*.C \
-        $(top_srcdir)/src/apps/*.C
+	$(top_srcdir)/src/common/lic_utils/update_license.pl -S=$(top_srcdir)/src $(top_srcdir)/LICENSE $(STAMPED_FILES)
 	echo 'updated source license headers' >$@
+
+CLEANFILES += .license.stamp
 
 EXTRA_DIST = common
 
