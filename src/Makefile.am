@@ -1,5 +1,3 @@
-BUILT_SOURCES   = .license.stamp
-
 #----------------------------------------
 # Programs and libraries we want to build
 #----------------------------------------
@@ -56,18 +54,4 @@ CLEANFILES =
 if CODE_COVERAGE_ENABLED
   CLEANFILES += *.gcda *.gcno
 endif
-
-#---------------------------------
-# Embedded license header support
-#---------------------------------
-
-STAMPED_FILES = $(libhelloworld_la_SOURCES) $(include_HEADERS) $(helloworld_version_SoURCES)
-
-.license.stamp: $(top_srcdir)/LICENSE
-	$(top_srcdir)/src/common/lic_utils/update_license.pl -S=$(top_srcdir)/src $(top_srcdir)/LICENSE $(STAMPED_FILES)
-	echo 'updated source license headers' >$@
-
-CLEANFILES += .license.stamp
-
-EXTRA_DIST = common
 
