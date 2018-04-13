@@ -1,5 +1,3 @@
-BUILT_SOURCES   = .license.stamp
-
 check_PROGRAMS  =
 check_PROGRAMS += core_name_unit
 check_PROGRAMS += input_file_unit
